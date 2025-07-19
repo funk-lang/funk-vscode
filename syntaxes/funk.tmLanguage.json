@@ -1,0 +1,213 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Funk",
+  "scopeName": "source.funk",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#primitives"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#identifiers"
+    },
+    {
+      "include": "#punctuation"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-dash.funk",
+          "match": "--.*$"
+        },
+        {
+          "name": "comment.block.funk",
+          "begin": "\\{-",
+          "end": "-\\}",
+          "patterns": [
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.funk",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.funk",
+              "match": "\\\\[\"\\\\nrt]"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.funk",
+          "match": "\\b\\d+\\.\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.funk",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.funk",
+          "match": "\\b(if|then|else|case|of|where|do)\\b"
+        },
+        {
+          "name": "keyword.declaration.funk",
+          "match": "\\b(data|type|newtype|class|instance|trait|pub|use|forall)\\b"
+        },
+        {
+          "name": "keyword.other.funk",
+          "match": "\\b(let|in)\\b"
+        },
+        {
+          "name": "keyword.operator.funk",
+          "match": "\\b(and|or|not)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "support.type.builtin.funk",
+          "match": "\\b(Int|String|Bool|Unit|IO|List)\\b"
+        },
+        {
+          "name": "entity.name.type.funk",
+          "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+        },
+        {
+          "name": "variable.other.generic.funk",
+          "match": "\\b[a-z][a-zA-Z0-9_]*\\b(?=\\s*::)"
+        }
+      ]
+    },
+    "primitives": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.funk",
+          "match": "#[a-zA-Z][a-zA-Z0-9_]*\\b"
+        },
+        {
+          "name": "constant.language.boolean.funk",
+          "match": "#(true|false)\\b"
+        },
+        {
+          "name": "constant.language.unit.funk",
+          "match": "#Unit\\b"
+        },
+        {
+          "name": "constant.language.nil.funk",
+          "match": "#Nil\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.funk",
+          "match": "="
+        },
+        {
+          "name": "keyword.operator.arrow.funk",
+          "match": "->"
+        },
+        {
+          "name": "keyword.operator.lambda.funk",
+          "match": "\\\\"
+        },
+        {
+          "name": "keyword.operator.type.funk",
+          "match": "::"
+        },
+        {
+          "name": "keyword.operator.pipe.funk",
+          "match": "\\|"
+        },
+        {
+          "name": "keyword.operator.composition.funk",
+          "match": "\\."
+        },
+        {
+          "name": "keyword.operator.string.funk",
+          "match": "\\+\\+"
+        },
+        {
+          "name": "keyword.operator.arithmetic.funk",
+          "match": "[+\\-*/]"
+        },
+        {
+          "name": "keyword.operator.comparison.funk",
+          "match": "[<>=!]+"
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "entity.name.function.funk",
+          "match": "\\b[a-z][a-zA-Z0-9_]*\\b(?=\\s*=(?!=))"
+        },
+        {
+          "name": "variable.other.funk",
+          "match": "\\b[a-z][a-zA-Z0-9_']*\\b"
+        },
+        {
+          "name": "entity.name.type.constructor.funk",
+          "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.definition.block.funk",
+          "match": "[{}]"
+        },
+        {
+          "name": "punctuation.definition.list.funk",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.definition.parameters.funk",
+          "match": "[()]"
+        },
+        {
+          "name": "punctuation.separator.funk",
+          "match": "[,;]"
+        }
+      ]
+    }
+  }
+}
